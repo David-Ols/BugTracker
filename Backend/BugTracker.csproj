@@ -7,4 +7,18 @@
     <UseAppHost>false</UseAppHost>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="Models\" />
+    <None Remove="Repository\" />
+    <None Remove="Repository\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Models\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Repository\Interfaces\" />
+  </ItemGroup>
 </Project>

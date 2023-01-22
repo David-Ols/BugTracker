@@ -6,8 +6,11 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import Vuetify from 'vuetify/lib/framework';
 
-export default Vue.extend({
-  name: 'CreateUser',
+Vue.use(Vuetify);
+
+export default new Vuetify({
+  name: 'EditUser',
 });
 </script>

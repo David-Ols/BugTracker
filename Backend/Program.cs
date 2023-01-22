@@ -1,4 +1,9 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BugTracker.Repository;
+using BugTracker.Repository.Interfaces;
+using BugTracker.Services;
+using BugTracker.Services.Interfaces;
+
+var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
@@ -12,6 +17,9 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IBugService, BugService>();
+builder.Services.AddScoped<IBugRepository, BugRepository>();
 
 var app = builder.Build();
 

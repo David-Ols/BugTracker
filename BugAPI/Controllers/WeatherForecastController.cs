@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BugAPI.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BugAPI.Controllers;
 
@@ -19,15 +20,21 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<WeatherForecast> Get()
+    public IEnumerable<Bug> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        var bugs = new List<Bug>()
         {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+            new Bug{
+                Id = Guid.NewGuid(),
+                Description = "Description",
+                OpenedOn = DateTime.Now,
+                PublicId = "Bug-1",
+                Status = "Status",
+                Title = "Title"
+            }
+        };
+
+        return bugs;
     }
 }
 

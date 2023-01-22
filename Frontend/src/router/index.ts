@@ -26,7 +26,7 @@ const routes: Array<RouteConfig> = [
     component: NewBug
   },
   {
-    path: '/bug',
+    path: '/bug/:publicId',
     name: 'bug',
     component: Bug
   },
