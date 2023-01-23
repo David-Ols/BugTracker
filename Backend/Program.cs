@@ -2,6 +2,8 @@
 using BugTracker.Repository.Interfaces;
 using BugTracker.Services;
 using BugTracker.Services.Interfaces;
+using BugTracker.Mappers;
+using BugTracker.Mappers.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -20,6 +22,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IBugService, BugService>();
 builder.Services.AddScoped<IBugRepository, BugRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBugMapper, BugMapper>();
 
 var app = builder.Build();
 

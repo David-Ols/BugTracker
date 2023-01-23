@@ -34,6 +34,30 @@ namespace BugTracker.Repository
                 return null;
             }
         }
+
+        public async Task<Bug> GetByPublicId(string publicId)
+        {
+            try
+            {
+                var response = await _client.GetAsync($"/bug/{publicId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var bug = await response.Content.ReadFromJsonAsync<Bug>();
+
+                    return bug;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+
+        }
     }
 }
 

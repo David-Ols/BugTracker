@@ -19,25 +19,28 @@ namespace BugAPI.Repository
                     Id = Guid.NewGuid(),
                     Description = "Description",
                     OpenedOn = new DateTime(2023, 01, 01),
-                    PublicId = "Bug-1",
+                    PublicId = "Bug1",
                     Status = "Open",
-                    Title = "Title 1"
+                    Title = "Title 1",
+                    UserId = new Guid("d8ed78a1-032c-4ed9-bac3-036fb65fd41d")
                 },
                 new Bug{
                     Id = Guid.NewGuid(),
                     Description = "Description 2",
                     OpenedOn = new DateTime(2023, 01, 02),
-                    PublicId = "Bug-2",
+                    PublicId = "Bug2",
                     Status = "Closed",
-                    Title = "Title 2"
+                    Title = "Title 2",
+                    UserId = new Guid("f1e43af1-9373-4b03-b2f9-3eec1eedeb58")
                 },
                 new Bug{
                     Id = Guid.NewGuid(),
                     Description = "Description 3",
                     OpenedOn = new DateTime(2023, 01, 03),
-                    PublicId = "Bug-3",
+                    PublicId = "Bug3",
                     Status = "Open",
-                    Title = "Title 3"
+                    Title = "Title 3",
+                    UserId = new Guid("d8ed78a1-032c-4ed9-bac3-036fb65fd41d")
                 },
             };
             _memoryCache.Set(_bugKey, initialBugs);
@@ -48,7 +51,12 @@ namespace BugAPI.Repository
             return _memoryCache.Get<List<Bug>>(_bugKey);
         }
 
+        public Bug GetByPublicId(string publicId)
+        {
+            var bugs = _memoryCache.Get<List<Bug>>(_bugKey);
 
+            return bugs.FirstOrDefault(b => b.PublicId == publicId);
+        }
     }
 }
 

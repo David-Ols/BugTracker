@@ -19,6 +19,7 @@ namespace BugAPI.Controllers
 		}
 
         [HttpGet]
+        [Route("/bug")]
         public IActionResult Get()
         {
             try
@@ -28,6 +29,25 @@ namespace BugAPI.Controllers
                 return Ok(bugs);
             }
             catch(Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+
+                return BadRequest("Failed to get all bugs!");
+            }
+
+        }
+
+        [HttpGet]
+        [Route("/bug/{publicId}")]
+        public IActionResult GetByPublicId(string publicId)
+        {
+            try
+            {
+                var bug = _bugService.GetByPublicId(publicId);
+
+                return Ok(bug);
+            }
+            catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
 

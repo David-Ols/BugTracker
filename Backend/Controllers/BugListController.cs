@@ -6,24 +6,23 @@ namespace BugTracker.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BugController : ControllerBase
+    public class BugListController : ControllerBase
     {
-        private readonly ILogger<BugController> _logger;
+        private readonly ILogger<BugListController> _logger;
         private readonly IBugService _bugService;
 
-        public BugController(ILogger<BugController> logger, IBugService bugService)
+        public BugListController(ILogger<BugListController> logger, IBugService bugService)
 		{
             _logger = logger;
             _bugService = bugService;
 		}
 
         [HttpGet]
-        public async Task<IActionResult> Get(string publicId)
+        public async Task<IActionResult> Get()
         {
-            var bug = await _bugService.GetByPublicId(publicId);
-            return Ok(bug);
+            var bugs = await _bugService.GetAllBugs();
+            return Ok(bugs);
         }
-
     }
 }
 

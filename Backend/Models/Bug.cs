@@ -9,7 +9,7 @@ namespace BugTracker.Models
         public string Status { get; set; }
         public string Description { get; set; }
         public DateTime OpenedOn { get; set; }
-        public User AssignedUser { get; set; }
+        public Guid UserId { get; set; }
     }
 }
 

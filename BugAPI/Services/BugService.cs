@@ -19,6 +19,11 @@ namespace BugAPI.Services
         {
             return _bugRepository.GetAll();
         }
+
+        public Bug GetByPublicId(string publicId)
+        {
+            return _bugRepository.GetByPublicId(publicId);
+        }
     }
 }
 

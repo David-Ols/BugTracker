@@ -15,16 +15,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import dataService from "../services/DataService";
-import axios from 'axios';
-import VueRouter from 'vue-router'
+import { Bug } from '../interfaces/dtos';
 
-export interface Bug{
-  publicId: string,
-  status: string,
-  title: string,
-  assigneeName: string,
-  openedOn: string
-}
 
 export default Vue.extend({
   name: 'BugList',

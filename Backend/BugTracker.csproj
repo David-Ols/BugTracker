@@ -13,6 +13,9 @@
     <None Remove="Models\" />
     <None Remove="Repository\" />
     <None Remove="Repository\Interfaces\" />
+    <None Remove="Dtos\" />
+    <None Remove="Mappers\" />
+    <None Remove="Mappers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -20,5 +23,8 @@
     <Folder Include="Models\" />
     <Folder Include="Repository\" />
     <Folder Include="Repository\Interfaces\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="Mappers\Interfaces\" />
   </ItemGroup>
 </Project>

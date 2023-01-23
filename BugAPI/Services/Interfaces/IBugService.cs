@@ -6,6 +6,7 @@ namespace BugAPI.Services.Interfaces
 	public interface IBugService
 	{
 		IEnumerable<Bug> GetAllBugs();
-	}
+		Bug GetByPublicId(string publicId);
+    }
 }
 
