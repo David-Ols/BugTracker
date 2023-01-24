@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BugList from '../components/BugList.vue'
-import NewBug from '../components/NewBug.vue'
+import CreateBug from '../components/CreateBug.vue'
 import Bug from '../components/Bug.vue'
 import AddUser from '../components/AddUser.vue'
 import EditUser from '../components/EditUser.vue'
@@ -22,9 +22,9 @@ const routes: Array<RouteConfig> = [
     component: BugList
   },
   {
-    path: '/newbug',
-    name: 'newbug',
-    component: NewBug
+    path: '/createbug',
+    name: 'createbug',
+    component: CreateBug
   },
   {
     path: '/bug/:publicId',

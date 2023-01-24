@@ -21,6 +21,11 @@ namespace BugTracker.Services
             _userRepository = userRepository;
 		}
 
+        public async Task<Bug> CreateBug(CreateBug bug)
+        {
+            return await _bugRepository.CreateBug(bug);
+        }
+
         public Task<IEnumerable<Bug>> GetAllBugs()
         {
             return _bugRepository.GetAllBugs();
@@ -28,13 +33,15 @@ namespace BugTracker.Services
 
         public async Task<BugDto> GetByPublicId(string publicId)
         {
+            User user = null;
             var bug = await _bugRepository.GetByPublicId(publicId);
 
             if (bug == null) return null;
 
-            var user = await _userRepository.GetById(bug.UserId);
-
-            if (user == null) return null;
+            if(bug.UserId != null)
+            {
+                user = await _userRepository.GetById((Guid)bug.UserId);
+            }
 
             return _bugMapper.Map(bug, user);
         }

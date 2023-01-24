@@ -52,11 +52,11 @@ export default Vue.extend({
   name: 'Bug',
   async created(){
      const response = await dataService.getBugByPublicId(this.$route.params.publicId);
-     this.bug = response as Bug;
+     this.bug = response;
   },
   data: function() {
     return {
-      bug: {} as Bug
+      bug: <Bug>{}
     }
   },
 });

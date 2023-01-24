@@ -1,4 +1,5 @@
 ﻿using System;
+using BugTracker.Models;
 using BugTracker.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,27 @@ namespace BugTracker.Controllers
             return Ok(bug);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] CreateBug bug)
+        {
+            try
+            {
+                if (bug == null) return BadRequest("Request object is null!");
+                if(string.IsNullOrWhiteSpace(bug.Title)) return BadRequest("Title is required!");
+                if (string.IsNullOrWhiteSpace(bug.Description)) return BadRequest("Description is required!");
+
+                var newBug = await _bugService.CreateBug(bug);
+
+                if (newBug == null) return BadRequest("Failed to create bug!");
+
+                return Ok(newBug);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return BadRequest($"Failed to create bug!");
+            }
+        }
     }
 }
 

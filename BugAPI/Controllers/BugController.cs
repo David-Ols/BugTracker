@@ -1,5 +1,6 @@
 ﻿using System;
 using BugAPI.Entities;
+using BugAPI.Models;
 using BugAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,6 +53,26 @@ namespace BugAPI.Controllers
                 _logger.LogError(ex, ex.Message);
 
                 return BadRequest("Failed to get all bugs!");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("/bug")]
+        public IActionResult Post([FromBody] CreateBug bug)
+        {
+            try
+            {
+                var newBug = _bugService.Create(bug);
+
+                if (newBug == null) return BadRequest($"Failed to create bug!");
+
+                return Ok(newBug);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return BadRequest($"Failed to create bug!");
             }
 
         }

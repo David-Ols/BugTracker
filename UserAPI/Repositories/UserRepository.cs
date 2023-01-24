@@ -48,7 +48,14 @@ namespace UserAPI.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            return _memoryCache.Get<List<User>>(_userKey);
+            var users = _memoryCache.Get<IEnumerable<User>>(_userKey);
+
+            if(users == null)
+            {
+                users = Enumerable.Empty<User>();
+            }
+
+            return users;
         }
 
         public bool Update(User user)

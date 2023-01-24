@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
+using System.Xml.Linq;
 using BugTracker.Models;
 using BugTracker.Repository.Interfaces;
 
@@ -57,6 +60,26 @@ namespace BugTracker.Repository
                 return null;
             }
 
+        }
+
+        public async Task<Bug> CreateBug(CreateBug bug)
+        {
+            var stringContent = new StringContent(
+                JsonSerializer.Serialize(bug),
+                UnicodeEncoding.UTF8,
+                "application/json"
+            );
+
+            var response = await _client.PostAsync($"/bug", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Bug>();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using BugAPI.Entities;
+using BugAPI.Models;
 
 namespace BugAPI.Services.Interfaces
 {
@@ -7,6 +8,7 @@ namespace BugAPI.Services.Interfaces
 	{
 		IEnumerable<Bug> GetAllBugs();
 		Bug GetByPublicId(string publicId);
+		Bug Create(CreateBug bug);
     }
 }
 

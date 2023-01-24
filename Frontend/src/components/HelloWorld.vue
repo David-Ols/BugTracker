@@ -2,13 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
-        <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/bugs">BugList</router-link> |
-      <router-link to="/newbug">Create Bug</router-link> |
-      <router-link to="/adduser">Add User</router-link> |
-      <router-link to="/users">Users</router-link> 
-    </nav>
+
         <v-img
           :src="require('../assets/logo.svg')"
           class="my-3"

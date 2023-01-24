@@ -12,9 +12,9 @@ namespace BugTracker.Mappers
 		{
 			return new BugDto
 			{
-				AssigneeName = user.Name,
+				AssigneeName = user?.Name,
 				Description = bug.Description,
-				OpenedOn = bug.OpenedOn.ToShortDateString(),
+				OpenedOn = bug.OpenedOn?.ToShortDateString() ?? "",
 				PublicId = bug.PublicId,
 				Status = bug.Status,
 				Title = bug.Title

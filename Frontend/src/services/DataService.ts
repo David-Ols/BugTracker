@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { Bug, User } from '../dtos/dtos';
+import { Bug, User, CreateBug } from '../dtos/dtos';
 
 const baseUrl = 'https://localhost:7104';
 
@@ -37,10 +37,20 @@ const updateUser = async function(user: User): Promise<boolean>{
     return response.data;
 }
 
+const createBug = async function(bug: CreateBug): Promise<Bug>{
+    const response = await axios.post<Bug>(
+        `${baseUrl}/bug`, 
+        JSON.stringify(bug), 
+        {headers:{"Content-Type" : "application/json"}}
+    ); 
+    return response.data;
+}
+
 export default {
      getAllBugs: getAllBugs,
      getBugByPublicId: getBugByPublicId,
      createUser: createUser,
      getAllUsers: getAllUsers,
-     updateUser: updateUser
+     updateUser: updateUser,
+     createBug: createBug
 }

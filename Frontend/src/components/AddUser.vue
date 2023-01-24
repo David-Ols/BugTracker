@@ -21,7 +21,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import dataService from "../services/DataService";
-import { User } from '../dtos/dtos';
 import { AlertType } from '@/enums/enums';
 
 

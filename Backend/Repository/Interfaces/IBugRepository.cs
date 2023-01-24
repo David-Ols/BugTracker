@@ -7,6 +7,7 @@ namespace BugTracker.Repository.Interfaces
 	{
 		Task<IEnumerable<Bug>> GetAllBugs();
 		Task<Bug> GetByPublicId(string publicId);
+		Task<Bug> CreateBug(CreateBug bug);
     }
 }
 

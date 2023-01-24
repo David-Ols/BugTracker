@@ -13,6 +13,8 @@
     <None Remove="Services\Interfaces\" />
     <None Remove="Repository\" />
     <None Remove="Repository\Interfaces\" />
+    <None Remove="Models\" />
+    <None Remove="Enums\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -20,5 +22,7 @@
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Repository\" />
     <Folder Include="Repository\Interfaces\" />
+    <Folder Include="Models\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
 </Project>

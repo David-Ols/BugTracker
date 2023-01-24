@@ -27,27 +27,9 @@ export default Vue.extend({
     return {
       headers: [
         { text: 'PublicId', value: 'publicId' },
-        { text: 'Status', value: 'status' },
         { text: 'Title', value: 'title' },
-        { text: 'User', value: 'assigneeName' },
-        { text: 'Opened On', value: 'openedOn' },
       ],
-      bugs: [
-        {
-          publicId: 'Bug-1',
-          status: "Open",
-          title: "Title",
-          assigneeName: "David",
-          openedOn: "01.01.2012"
-        },
-        {
-          publicId: 'Bug-2',
-          status: "Open",
-          title: "Title",
-          assigneeName: "David",
-          openedOn: "02.01.2012"
-        },
-      ],
+      bugs: <Bug[]>[],
     };
   },
   methods:{

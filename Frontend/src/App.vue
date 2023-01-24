@@ -38,6 +38,14 @@
     </v-app-bar>
 
     <v-main class="ml-15 mr-15 mt-5">
+      <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/bugs">BugList</router-link> |
+      <router-link to="/createbug">Create Bug</router-link> |
+      <router-link to="/adduser">Add User</router-link> |
+      <router-link to="/users">Users</router-link> 
+    </nav>
+
       <router-view/>
     </v-main>
   </v-app>
