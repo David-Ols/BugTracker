@@ -17,7 +17,8 @@ namespace BugTracker.Mappers
 				OpenedOn = bug.OpenedOn?.ToShortDateString() ?? "",
 				PublicId = bug.PublicId,
 				Status = bug.Status,
-				Title = bug.Title
+				Title = bug.Title,
+				Id = bug.Id
 			};
 		}
 	}

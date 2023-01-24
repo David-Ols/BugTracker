@@ -32,15 +32,11 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { AlertType, BugStatus } from '@/enums/enums';
-import { Bug, User, CreateBug } from '../dtos/dtos';
+import { AlertType } from '@/enums/enums';
+import { User, CreateBug, Alert } from '../dtos/dtos';
 import dataService from "../services/DataService";
 
-declare interface Alert{
-    showAlert: boolean,
-    alertType: AlertType,
-    alertMessage: string
-}
+
 
 export default Vue.extend({
   name: 'CreateBug',

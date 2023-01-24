@@ -81,6 +81,25 @@ namespace BugTracker.Repository
                 return null;
             }
         }
+
+        public async Task<bool> UpdateBugStatus(UpdateBugStatus request)
+        {
+            var stringContent = new StringContent(
+                JsonSerializer.Serialize(request),
+                UnicodeEncoding.UTF8,
+                "application/json"
+            );
+            var response = await _client.PutAsync($"/bugStatus", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<bool>();
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 

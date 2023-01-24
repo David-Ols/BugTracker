@@ -1,5 +1,6 @@
 ﻿using System;
 using BugAPI.Entities;
+using BugAPI.Models;
 using BugAPI.Repository.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -51,6 +52,23 @@ namespace BugAPI.Repository
 
 
             return $"Bug-{((bugs?.Count() ?? 0) + 1)}";
+        }
+
+        public bool UpdateBugStatus(BugStatusUpdate request)
+        {
+            var bugs = GetAll().ToList();
+            var bugToUpdate = bugs?.FirstOrDefault(b => b.Id == request.BugId);
+
+            if (bugToUpdate == null) return false;
+
+            bugToUpdate.Status = request.Status;
+
+            bugs?.RemoveAll(b => b.Id == request.BugId);
+            bugs?.Add(bugToUpdate);
+
+            _memoryCache.Set(_bugKey, bugs);
+
+            return true;
         }
     }
 }

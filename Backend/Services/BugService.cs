@@ -26,9 +26,9 @@ namespace BugTracker.Services
             return await _bugRepository.CreateBug(bug);
         }
 
-        public Task<IEnumerable<Bug>> GetAllBugs()
+        public async Task<IEnumerable<Bug>> GetAllBugs()
         {
-            return _bugRepository.GetAllBugs();
+            return await _bugRepository.GetAllBugs();
         }
 
         public async Task<BugDto> GetByPublicId(string publicId)
@@ -44,6 +44,11 @@ namespace BugTracker.Services
             }
 
             return _bugMapper.Map(bug, user);
+        }
+
+        public async Task<bool> UpdateBugStatus(UpdateBugStatus request)
+        {
+            return await _bugRepository.UpdateBugStatus(request;
         }
     }
 }

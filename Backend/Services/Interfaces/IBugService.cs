@@ -9,7 +9,7 @@ namespace BugTracker.Services.Interfaces
 		Task<IEnumerable<Bug>> GetAllBugs();
 		Task<BugDto> GetByPublicId(string publicId);
 		Task<Bug> CreateBug(CreateBug bug);
-
+		Task<bool> UpdateBugStatus(UpdateBugStatus request);
     }
 }
 

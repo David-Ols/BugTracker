@@ -41,6 +41,11 @@ namespace BugAPI.Services
         {
             return _bugRepository.GetByPublicId(publicId);
         }
+
+        public bool UpdateBugStatus(BugStatusUpdate request)
+        {
+            return _bugRepository.UpdateBugStatus(request);
+        }
     }
 }
 

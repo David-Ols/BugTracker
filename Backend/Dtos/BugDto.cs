@@ -9,6 +9,7 @@ namespace BugTracker.Dtos
         public string AssigneeName { get; set; }
         public string OpenedOn { get; set; }
         public string Description { get; set; }
+        public Guid Id { get; set; }
     }
 }
 

@@ -1,5 +1,11 @@
 <template>
-  <v-container class="grey lighten-5 mt-5">
+  <div>
+    <v-alert
+      v-model="alert.showAlert"
+      :type="alert.alertType"
+      dismissible
+    >{{ alert.alertMessage }}</v-alert>
+    <v-container class="grey lighten-5 mt-5">
     <v-row>
       <v-col cols="12"><h1>{{bug.title}}</h1></v-col>
     </v-row>
@@ -34,30 +40,68 @@
             <v-col cols="6">Opened On</v-col>
             <v-col cols="6">{{ bug.openedOn }}</v-col>
           </v-row>
-    
+          <v-row
+            v-if="canCloseBug">
+            <v-col cols="6">Action</v-col>
+            <v-col cols="6"> <v-btn @click="closeBug">Close</v-btn></v-col>
+          </v-row>
     
         </v-card>
       </v-col>
   
     </v-row>
   </v-container>
+  </div>
+
 </template>   
 
 <script lang="ts">
 import Vue from 'vue';
 import dataService from "../services/DataService";
-import { Bug } from '../dtos/dtos';
+import { Bug, Alert, BugStatusUpdate } from '../dtos/dtos';
+import { BugStatus } from '@/enums/enums';
+import { AlertType } from '@/enums/enums';
 
 export default Vue.extend({
   name: 'Bug',
   async created(){
-     const response = await dataService.getBugByPublicId(this.$route.params.publicId);
-     this.bug = response;
+    this.loadBug();
   },
   data: function() {
     return {
-      bug: <Bug>{}
+      bug: <Bug>{},
+      alert: <Alert>{ showAlert: false},
     }
   },
+  methods:{
+    async closeBug(){
+      const request: BugStatusUpdate = {
+        bugId: this.bug.id,
+        status: BugStatus.closed
+      };
+
+      const isClosed = await dataService.updateBugStatus(request);
+
+      if(isClosed){
+        this.loadBug();
+      }else{
+        this.displayAlert(AlertType.error, "Failed to close bug.");
+      }
+    },
+    async loadBug(){
+      const response = await dataService.getBugByPublicId(this.$route.params.publicId);
+      this.bug = response;
+    },
+    displayAlert(type: AlertType, message: string){
+      this.alert.alertType = type;
+      this.alert.alertMessage = message;
+      this.alert.showAlert = true;
+    }
+  },
+  computed: {
+    canCloseBug() :boolean{
+      return this.bug.status === BugStatus.open;
+    }
+  }
 });
 </script>

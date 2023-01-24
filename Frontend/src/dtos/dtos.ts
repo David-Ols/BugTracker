@@ -1,3 +1,5 @@
+import { AlertType } from '@/enums/enums';
+
 export interface Bug{
     publicId: string,
     status: string,
@@ -5,7 +7,8 @@ export interface Bug{
     assigneeName: string,
     openedOn: string,
     description: string,
-    userId: string
+    userId: string,
+    id: string
 }
 
 export interface User{
@@ -17,5 +20,16 @@ export interface CreateBug{
     title: string,
     description: string,
     userId: string
+}
+
+export interface Alert{
+    showAlert: boolean,
+    alertType: AlertType,
+    alertMessage: string
+}
+
+export interface BugStatusUpdate{
+    status: string,
+    bugId: string
 }
 

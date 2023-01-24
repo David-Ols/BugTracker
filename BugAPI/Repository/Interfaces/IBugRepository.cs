@@ -1,5 +1,6 @@
 ﻿using System;
 using BugAPI.Entities;
+using BugAPI.Models;
 
 namespace BugAPI.Repository.Interfaces
 {
@@ -9,6 +10,7 @@ namespace BugAPI.Repository.Interfaces
 		Bug GetByPublicId(string publicId);
 		Bug Create(Bug bug);
 		string BuildPublicId();
+		bool UpdateBugStatus(BugStatusUpdate request);
     }
 }
 

@@ -9,6 +9,7 @@ namespace BugAPI.Services.Interfaces
 		IEnumerable<Bug> GetAllBugs();
 		Bug GetByPublicId(string publicId);
 		Bug Create(CreateBug bug);
+		bool UpdateBugStatus(BugStatusUpdate request);
     }
 }
 
