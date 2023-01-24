@@ -6,6 +6,7 @@ import NewBug from '../components/NewBug.vue'
 import Bug from '../components/Bug.vue'
 import AddUser from '../components/AddUser.vue'
 import EditUser from '../components/EditUser.vue'
+import Users from '../components/Users.vue'
 
 Vue.use(VueRouter)
 
@@ -36,9 +37,9 @@ const routes: Array<RouteConfig> = [
     component: AddUser
   },
   {
-    path: '/edituser',
-    name: 'edituser',
-    component: EditUser
+    path: '/users',
+    name: 'users',
+    component: Users
   }
 ]
 

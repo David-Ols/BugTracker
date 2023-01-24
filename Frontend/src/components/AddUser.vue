@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-alert
-      v-model="showAllert"
+      v-model="showAlert"
       :type="alertType"
       dismissible
     >{{ alertMessage }}</v-alert>
@@ -21,20 +21,17 @@
 <script lang="ts">
 import Vue from 'vue';
 import dataService from "../services/DataService";
-import { User } from '../interfaces/dtos';
+import { User } from '../dtos/dtos';
+import { AlertType } from '@/enums/enums';
 
-enum AlertType {
-  success = 'success',
-  error = 'error',
-}
 
 export default Vue.extend({
   name: 'AddUser',
   data: function() {
     return {
       name: '',
-      showAllert: false,
-      alertType: 'success',
+      showAlert: false,
+      alertType: AlertType.success,
       alertMessage: ''
     }
   },
@@ -54,7 +51,7 @@ export default Vue.extend({
     displayAlert(type: AlertType, message: string){
       this.alertType = type;
       this.alertMessage = message;
-      this.showAllert = true;
+      this.showAlert = true;
     }
   }
 });

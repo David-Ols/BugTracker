@@ -46,14 +46,12 @@
 <script lang="ts">
 import Vue from 'vue';
 import dataService from "../services/DataService";
-import { Bug } from '../interfaces/dtos';
+import { Bug } from '../dtos/dtos';
 
 export default Vue.extend({
   name: 'Bug',
   async created(){
-    console.log("from bug", this.$route.params.publicId);
      const response = await dataService.getBugByPublicId(this.$route.params.publicId);
-     console.log("bug response",response);
      this.bug = response as Bug;
   },
   data: function() {

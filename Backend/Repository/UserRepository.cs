@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
+using System.Xml.Linq;
 using BugTracker.Models;
 using BugTracker.Repository.Interfaces;
 
@@ -40,11 +42,11 @@ namespace BugTracker.Repository
         {
             try
             {
-                var content = new FormUrlEncodedContent(new[]
-{
-                new KeyValuePair<string, string>("", name)
-            });
-                var stringContent = new StringContent(JsonSerializer.Serialize(name), UnicodeEncoding.UTF8, "application/json");
+                var stringContent = new StringContent(
+                    JsonSerializer.Serialize(name),
+                    UnicodeEncoding.UTF8,
+                    "application/json"
+                );
 
                 var response = await _client.PostAsync($"/user", stringContent);
 
@@ -62,6 +64,39 @@ namespace BugTracker.Repository
                 return null;
             }
 
+        }
+
+        public async Task<IEnumerable<User>> GetAll()
+        {
+            var response = await _client.GetAsync($"/user");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<IEnumerable<User>>();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> UpdateUser(User user)
+        {
+            var stringContent = new StringContent(
+                JsonSerializer.Serialize(user),
+                UnicodeEncoding.UTF8,
+                "application/json"
+            );
+            var response = await _client.PutAsync($"/user", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<bool>();
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

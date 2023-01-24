@@ -6,9 +6,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/bugs">BugList</router-link> |
       <router-link to="/newbug">Create Bug</router-link> |
-      <router-link to="/bug">Bug</router-link> |
       <router-link to="/adduser">Add User</router-link> |
-      <router-link to="/edituser">Edit User</router-link> 
+      <router-link to="/users">Users</router-link> 
     </nav>
         <v-img
           :src="require('../assets/logo.svg')"

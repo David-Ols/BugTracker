@@ -34,6 +34,11 @@ namespace UserAPI.Services
         {
             return _userRepository.GetById(id);
         }
+
+        public bool Update(User user)
+        {
+            return _userRepository.Update(user);
+        }
     }
 }
 

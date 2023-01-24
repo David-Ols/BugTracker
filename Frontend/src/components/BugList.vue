@@ -15,7 +15,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import dataService from "../services/DataService";
-import { Bug } from '../interfaces/dtos';
+import { Bug } from '../dtos/dtos';
 
 
 export default Vue.extend({
@@ -56,8 +56,7 @@ export default Vue.extend({
     },
     async loadData(){
       const response = await dataService.getAllBugs();
-      console.log(response);
-      this.bugs = response as [];
+      this.bugs = response;
     }
   }
 });

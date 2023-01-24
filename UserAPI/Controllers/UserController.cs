@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using UserAPI.Entities;
 using UserAPI.Services.Interfaces;
 
 namespace UserAPI.Controllers
@@ -69,6 +70,24 @@ namespace UserAPI.Controllers
             {
                 _logger.LogError(ex, ex.Message);
                 return BadRequest($"Failed to create user for name: {name}");
+            }
+
+        }
+
+        [HttpPut]
+        [Route("/user")]
+        public IActionResult Put([FromBody] User user)
+        {
+            try
+            {
+                var isUpdated = _userService.Update(user);
+
+                return Ok(isUpdated);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return BadRequest($"Failed to update user for name: {user.Name}");
             }
 
         }

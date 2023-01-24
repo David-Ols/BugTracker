@@ -18,6 +18,16 @@ namespace BugTracker.Services
         {
             return await _userRepository.Create(name);
         }
+
+        public async Task<IEnumerable<User>> GetAll()
+        {
+            return await _userRepository.GetAll();
+        }
+
+        public async Task<bool> UpdateUser(User user)
+        {
+            return await _userRepository.UpdateUser(user);
+        }
     }
 }
 

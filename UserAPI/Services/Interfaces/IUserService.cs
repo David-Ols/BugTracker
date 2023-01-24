@@ -8,6 +8,7 @@ namespace UserAPI.Services.Interfaces
 		User GetById(Guid id);
 		User Create(string name);
 		IEnumerable<User> GetAll();
-	}
+		bool Update(User user);
+    }
 }
 
