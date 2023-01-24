@@ -37,7 +37,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="ml-15 mr-15 mt-5">
       <router-view/>
     </v-main>
   </v-app>

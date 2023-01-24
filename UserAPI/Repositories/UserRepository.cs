@@ -33,6 +33,21 @@ namespace UserAPI.Repositories
 
             return users.FirstOrDefault(b => b.Id == id);
         }
+
+        public User Create(User newUser)
+        {
+            var users = _memoryCache.Get<List<User>>(_userKey);
+            users.Add(newUser);
+
+            _memoryCache.Set(_userKey, users);
+
+            return newUser;
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return _memoryCache.Get<List<User>>(_userKey);
+        }
     }
 }
 

@@ -21,6 +21,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IBugService, BugService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBugRepository, BugRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBugMapper, BugMapper>();

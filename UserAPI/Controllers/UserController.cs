@@ -33,6 +33,43 @@ namespace UserAPI.Controllers
 
                 return BadRequest($"Failed to get user for id: {id}!");
             }
+        }
+
+        [HttpGet]
+        [Route("/user")]
+        public IActionResult Get()
+        {
+            try
+            {
+                var users = _userService.GetAll();
+
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+
+                return BadRequest($"Failed to get all users!");
+            }
+        }
+
+        [HttpPost]
+        [Route("/user")]
+        public IActionResult Post([FromBody] string name)
+        {
+            try
+            {
+                var user = _userService.Create(name);
+
+                if (user == null) return BadRequest($"Failed to create user for name: {name}");
+
+                return Ok(user);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return BadRequest($"Failed to create user for name: {name}");
+            }
 
         }
     }

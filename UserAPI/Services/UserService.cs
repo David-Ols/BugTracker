@@ -14,6 +14,22 @@ namespace UserAPI.Services
             _userRepository = userRepository;
 		}
 
+        public User Create(string name)
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = name
+            };
+
+            return _userRepository.Create(user);
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return _userRepository.GetAll();
+        }
+
         public User GetById(Guid id)
         {
             return _userRepository.GetById(id);
