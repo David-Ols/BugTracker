@@ -12,7 +12,7 @@
     "BugTracker": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "bug",
       "applicationUrl": "https://localhost:7104;http://localhost:5267",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,7 +21,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "bug",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
