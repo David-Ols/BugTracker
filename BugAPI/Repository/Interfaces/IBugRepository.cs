@@ -8,9 +8,11 @@ namespace BugAPI.Repository.Interfaces
 	{
 		IEnumerable<Bug> GetAll();
 		Bug GetByPublicId(string publicId);
-		Bug Create(Bug bug);
+        Bug GetById(Guid id);
+        Bug Create(Bug bug);
 		string BuildPublicId();
 		bool UpdateBugStatus(BugStatusUpdate request);
+		bool Update(Bug bug);
     }
 }
 

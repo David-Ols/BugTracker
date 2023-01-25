@@ -76,6 +76,24 @@ namespace BugAPI.Controllers
             }
 
         }
+
+        [HttpPut]
+        [Route("/bug")]
+        public IActionResult Put([FromBody] BugUpdate bug)
+        {
+            try
+            {
+                var isUpdated = _bugService.Update(bug);
+
+                return Ok(isUpdated);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return BadRequest($"Failed to create bug!");
+            }
+
+        }
     }
 }
 

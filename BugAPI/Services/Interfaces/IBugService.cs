@@ -10,6 +10,7 @@ namespace BugAPI.Services.Interfaces
 		Bug GetByPublicId(string publicId);
 		Bug Create(CreateBug bug);
 		bool UpdateBugStatus(BugStatusUpdate request);
+		bool Update(BugUpdate request);
     }
 }
 

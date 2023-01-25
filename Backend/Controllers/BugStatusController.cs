@@ -20,7 +20,7 @@ namespace BugTracker.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] UpdateBugStatus request)
+        public async Task<IActionResult> Put([FromBody] BugStatusUpdate request)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace BugTracker.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
-                return BadRequest($"Failed to update user {user.Name}.");
+                return BadRequest($"Failed to update bug status.");
             }
         }
     }

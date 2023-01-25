@@ -42,6 +42,30 @@ namespace BugAPI.Services
             return _bugRepository.GetByPublicId(publicId);
         }
 
+        public bool Update(BugUpdate request)
+        {
+            var bug = _bugRepository.GetById(request.BugId);
+
+            if (bug == null) return false;
+
+            bug.Description = request.Description;
+            bug.Title = request.Title;
+            bug.UserId = request.UserId;
+
+            if(bug.Status != request.Status && request.Status == StatusEnum.open.ToString())
+            {
+                bug.OpenedOn = DateTime.Now;
+            }
+            else if(bug.Status != request.Status && request.Status == StatusEnum.closed.ToString())
+            {
+                bug.OpenedOn = null;
+            }
+
+            bug.Status = request.Status;
+
+            return _bugRepository.Update(bug);
+        }
+
         public bool UpdateBugStatus(BugStatusUpdate request)
         {
             return _bugRepository.UpdateBugStatus(request);

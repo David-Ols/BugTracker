@@ -82,7 +82,7 @@ namespace BugTracker.Repository
             }
         }
 
-        public async Task<bool> UpdateBugStatus(UpdateBugStatus request)
+        public async Task<bool> UpdateBugStatus(BugStatusUpdate request)
         {
             var stringContent = new StringContent(
                 JsonSerializer.Serialize(request),
@@ -90,6 +90,25 @@ namespace BugTracker.Repository
                 "application/json"
             );
             var response = await _client.PutAsync($"/bugStatus", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<bool>();
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Update(BugUpdate request)
+        {
+            var stringContent = new StringContent(
+                JsonSerializer.Serialize(request),
+                UnicodeEncoding.UTF8,
+                "application/json"
+            );
+            var response = await _client.PutAsync($"/bug", stringContent);
 
             if (response.IsSuccessStatusCode)
             {

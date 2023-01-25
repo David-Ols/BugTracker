@@ -9,10 +9,10 @@
     <v-row>
       <v-col cols="12"><h1>{{bug.title}}</h1></v-col>
     </v-row>
-    <v-row no-gutters>
+    <v-row>
       <v-col cols="8">        
         <v-card
-          class="pa-2"
+          class="pa-2 maxHeight"
           tile
         >
           <h3>Description</h3>
@@ -40,19 +40,28 @@
             <v-col cols="6">Opened On</v-col>
             <v-col cols="6">{{ bug.openedOn }}</v-col>
           </v-row>
-          <v-row
-            v-if="canCloseBug">
-            <v-col cols="6">Action</v-col>
-            <v-col cols="6"> <v-btn @click="closeBug">Close</v-btn></v-col>
+          <v-row>
+            <v-col cols="4">Action</v-col>
+            <v-col cols="4"> <v-btn @click="closeBug" :disabled="!canCloseBug">Close</v-btn></v-col>
+            <v-col cols="4"> <v-btn @click="startEdit" :disabled="editBug">Edit</v-btn></v-col>
           </v-row>
     
         </v-card>
       </v-col>
   
     </v-row>
-  </v-container>
-  </div>
+    </v-container>
 
+    <EditBug
+      v-if="editBug"
+      :status="bug.status"
+      :userId="bug.userId"
+      :title="bug.title"
+      :description="bug.description"
+      :bugId="bug.id"
+      @cancelEdit="cancelEdit"
+    />
+  </div>
 </template>   
 
 <script lang="ts">
@@ -61,9 +70,13 @@ import dataService from "../services/DataService";
 import { Bug, Alert, BugStatusUpdate } from '../dtos/dtos';
 import { BugStatus } from '@/enums/enums';
 import { AlertType } from '@/enums/enums';
+import EditBug from "./EditBug.vue"
 
 export default Vue.extend({
   name: 'Bug',
+  components:{
+    EditBug
+  },
   async created(){
     this.loadBug();
   },
@@ -71,6 +84,7 @@ export default Vue.extend({
     return {
       bug: <Bug>{},
       alert: <Alert>{ showAlert: false},
+      editBug: false,
     }
   },
   methods:{
@@ -83,6 +97,7 @@ export default Vue.extend({
       const isClosed = await dataService.updateBugStatus(request);
 
       if(isClosed){
+        this.displayAlert(AlertType.success, "Bug was closed.");
         this.loadBug();
       }else{
         this.displayAlert(AlertType.error, "Failed to close bug.");
@@ -91,11 +106,20 @@ export default Vue.extend({
     async loadBug(){
       const response = await dataService.getBugByPublicId(this.$route.params.publicId);
       this.bug = response;
+      console.log("bug", this.bug);
     },
     displayAlert(type: AlertType, message: string){
       this.alert.alertType = type;
       this.alert.alertMessage = message;
       this.alert.showAlert = true;
+    },
+    startEdit(){
+      this.editBug = true;
+    },
+    cancelEdit(){
+      this.displayAlert(AlertType.success, "Bug was updated.");
+      this.editBug = false;
+      this.loadBug();
     }
   },
   computed: {
@@ -105,3 +129,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style scoped>
+.maxHeight {
+  height: 100%;;
+}
+</style>

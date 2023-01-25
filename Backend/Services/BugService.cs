@@ -46,9 +46,14 @@ namespace BugTracker.Services
             return _bugMapper.Map(bug, user);
         }
 
-        public async Task<bool> UpdateBugStatus(UpdateBugStatus request)
+        public async Task<bool> Update(BugUpdate request)
         {
-            return await _bugRepository.UpdateBugStatus(request;
+            return await _bugRepository.Update(request);
+        }
+
+        public async Task<bool> UpdateBugStatus(BugStatusUpdate request)
+        {
+            return await _bugRepository.UpdateBugStatus(request);
         }
     }
 }

@@ -46,6 +46,28 @@ namespace BugTracker.Controllers
                 return BadRequest($"Failed to create bug!");
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] BugUpdate request)
+        {
+            try
+            {
+                if (request == null) return BadRequest("Invalid request!");
+                if(string.IsNullOrWhiteSpace(request.Status)) return BadRequest("Status is required!");
+                if (string.IsNullOrWhiteSpace(request.Title)) return BadRequest("Title is required!");
+                if (string.IsNullOrWhiteSpace(request.Description)) return BadRequest("Description is required");
+                if (request.BugId == Guid.Empty) return BadRequest("Invalid bugId!");
+
+                var isUpdated = await _bugService.Update(request);
+
+                return Ok(isUpdated);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return BadRequest($"Failed to update bug!");
+            }
+        }
     }
 }
 

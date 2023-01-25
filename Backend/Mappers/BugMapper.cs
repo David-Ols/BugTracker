@@ -18,7 +18,8 @@ namespace BugTracker.Mappers
 				PublicId = bug.PublicId,
 				Status = bug.Status,
 				Title = bug.Title,
-				Id = bug.Id
+				Id = bug.Id,
+				UserId = user?.Id
 			};
 		}
 	}

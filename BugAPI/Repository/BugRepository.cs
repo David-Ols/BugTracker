@@ -1,5 +1,6 @@
 ﻿using System;
 using BugAPI.Entities;
+using BugAPI.Enums;
 using BugAPI.Models;
 using BugAPI.Repository.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
@@ -63,8 +64,35 @@ namespace BugAPI.Repository
 
             bugToUpdate.Status = request.Status;
 
+            if(bugToUpdate.Status == StatusEnum.closed.ToString())
+            {
+                bugToUpdate.OpenedOn = null;
+            }
+
             bugs?.RemoveAll(b => b.Id == request.BugId);
             bugs?.Add(bugToUpdate);
+
+            _memoryCache.Set(_bugKey, bugs);
+
+            return true;
+        }
+
+        public Bug GetById(Guid id)
+        {
+            var bugs = GetAll().ToList();
+
+            return bugs.FirstOrDefault(b => b.Id == id);
+        }
+
+        public bool Update(Bug bug)
+        {
+            var bugs = GetAll().ToList();
+            var bugToReplace = bugs?.FirstOrDefault(b => b.Id == bug.Id);
+
+            if (bugToReplace == null) return false;
+
+            bugs?.RemoveAll(b => b.Id == bug.Id);
+            bugs?.Add(bug);
 
             _memoryCache.Set(_bugKey, bugs);
 

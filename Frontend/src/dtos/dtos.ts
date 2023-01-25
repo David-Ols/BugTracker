@@ -33,3 +33,11 @@ export interface BugStatusUpdate{
     bugId: string
 }
 
+export interface BugUpdate{
+    status: string,
+    userId: string,
+    title: string,
+    description: string,
+    bugId: string
+}
+
