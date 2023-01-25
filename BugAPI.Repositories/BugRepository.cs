@@ -2,10 +2,10 @@
 using BugAPI.Entities;
 using BugAPI.Enums;
 using BugAPI.Models;
-using BugAPI.Repository.Interfaces;
+using BugAPI.Repositories.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace BugAPI.Repository
+namespace BugAPI.Repositories
 {
 	public class BugRepository : IBugRepository
 	{

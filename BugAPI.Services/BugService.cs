@@ -2,8 +2,8 @@
 using BugAPI.Entities;
 using BugAPI.Enums;
 using BugAPI.Models;
-using BugAPI.Repository;
-using BugAPI.Repository.Interfaces;
+using BugAPI.Repositories;
+using BugAPI.Repositories.Interfaces;
 using BugAPI.Services.Interfaces;
 
 namespace BugAPI.Services

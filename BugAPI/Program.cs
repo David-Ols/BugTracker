@@ -1,5 +1,5 @@
-﻿using BugAPI.Repository;
-using BugAPI.Repository.Interfaces;
+﻿using BugAPI.Repositories;
+using BugAPI.Repositories.Interfaces;
 using BugAPI.Services;
 using BugAPI.Services.Interfaces;
 

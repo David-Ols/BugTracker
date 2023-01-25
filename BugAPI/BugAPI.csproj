@@ -8,21 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Entities\" />
-    <None Remove="Services\" />
-    <None Remove="Services\Interfaces\" />
-    <None Remove="Repository\" />
-    <None Remove="Repository\Interfaces\" />
-    <None Remove="Models\" />
-    <None Remove="Enums\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Services\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Repository\" />
-    <Folder Include="Repository\Interfaces\" />
-    <Folder Include="Models\" />
-    <Folder Include="Enums\" />
+    <ProjectReference Include="..\BugAPI.Entities\BugAPI.Entities.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\BugAPI.Models\BugAPI.Models.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\BugAPI.Services\BugAPI.Services.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

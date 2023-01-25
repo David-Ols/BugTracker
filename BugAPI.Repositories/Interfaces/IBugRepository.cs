@@ -2,7 +2,7 @@
 using BugAPI.Entities;
 using BugAPI.Models;
 
-namespace BugAPI.Repository.Interfaces
+namespace BugAPI.Repositories.Interfaces
 {
 	public interface IBugRepository
 	{
