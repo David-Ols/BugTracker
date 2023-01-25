@@ -7,16 +7,19 @@ using System.Text.Json;
 using System.Xml.Linq;
 using BugTracker.Models;
 using BugTracker.Repository.Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace BugTracker.Repository
 {
 	public class UserRepository : IUserRepository
 	{
         private readonly HttpClient _client;
-        private const string baseUrl = "https://localhost:7026";
+        private readonly string baseUrl;
 
-        public UserRepository()
+        public UserRepository(IOptions<APISettings> options)
 		{
+            baseUrl = options.Value.UserApiBaseUrl;
+
             _client = new HttpClient();
 
             _client.BaseAddress = new Uri(baseUrl);

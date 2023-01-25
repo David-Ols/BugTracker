@@ -5,16 +5,19 @@ using System.Text.Json;
 using System.Xml.Linq;
 using BugTracker.Models;
 using BugTracker.Repository.Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace BugTracker.Repository
 {
 	public class BugRepository : IBugRepository
     {
 		private readonly HttpClient _client;
-        private const string baseUrl = "https://localhost:7283";
+        private readonly string baseUrl;
 
-        public BugRepository()
+        public BugRepository(IOptions<APISettings> options)
 		{
+            baseUrl = options.Value.BugApiBaseUrl;
+
 			_client = new HttpClient();
 
             _client.BaseAddress = new Uri(baseUrl);

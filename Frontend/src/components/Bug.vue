@@ -106,7 +106,6 @@ export default Vue.extend({
     async loadBug(){
       const response = await dataService.getBugByPublicId(this.$route.params.publicId);
       this.bug = response;
-      console.log("bug", this.bug);
     },
     displayAlert(type: AlertType, message: string){
       this.alert.alertType = type;
