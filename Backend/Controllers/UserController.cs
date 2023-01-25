@@ -50,7 +50,7 @@ namespace BugTracker.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
-                return BadRequest($"Failed to get all users.");
+                return BadRequest("Failed to get all users.");
             }
         }
 
