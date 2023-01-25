@@ -1,5 +1,5 @@
-﻿using BugTracker.Repository;
-using BugTracker.Repository.Interfaces;
+﻿using BugTracker.Repositories;
+using BugTracker.Repositories.Interfaces;
 using BugTracker.Services;
 using BugTracker.Services.Interfaces;
 using BugTracker.Mappers;

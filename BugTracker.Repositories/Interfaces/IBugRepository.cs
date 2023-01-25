@@ -1,13 +1,12 @@
 ﻿using System;
-using BugTracker.Dtos;
 using BugTracker.Models;
 
-namespace BugTracker.Services.Interfaces
+namespace BugTracker.Repositories.Interfaces
 {
-	public interface IBugService
+	public interface IBugRepository
 	{
 		Task<IEnumerable<Bug>> GetAllBugs();
-		Task<BugDto> GetByPublicId(string publicId);
+		Task<Bug> GetByPublicId(string publicId);
 		Task<Bug> CreateBug(CreateBug bug);
 		Task<bool> UpdateBugStatus(BugStatusUpdate request);
 		Task<bool> Update(BugUpdate request);

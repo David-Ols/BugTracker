@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BugTracker.Dtos
+namespace BugTracker.Models.Dtos
 {
 	public class BugDto
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 using BugTracker.Models;
-using BugTracker.Repository.Interfaces;
+using BugTracker.Repositories.Interfaces;
 using BugTracker.Services.Interfaces;
 
 namespace BugTracker.Services

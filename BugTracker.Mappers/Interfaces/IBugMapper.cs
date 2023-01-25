@@ -1,5 +1,5 @@
 ﻿using System;
-using BugTracker.Dtos;
+using BugTracker.Models.Dtos;
 using BugTracker.Models;
 
 namespace BugTracker.Mappers.Interfaces

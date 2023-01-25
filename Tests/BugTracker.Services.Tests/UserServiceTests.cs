@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Moq;
 using AutoFixture;
 using BugTracker.Mappers.Interfaces;
-using BugTracker.Repository.Interfaces;
+using BugTracker.Repositories.Interfaces;
 using BugTracker.Models;
 using BugTracker.Mappers;
 

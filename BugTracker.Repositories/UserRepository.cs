@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Xml.Linq;
 using BugTracker.Models;
-using BugTracker.Repository.Interfaces;
+using BugTracker.Repositories.Interfaces;
 using Microsoft.Extensions.Options;
 
-namespace BugTracker.Repository
+namespace BugTracker.Repositories
 {
 	public class UserRepository : IUserRepository
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
-using BugTracker.Dtos;
+using BugTracker.Models.Dtos;
 using BugTracker.Models;
-using BugTracker.Repository.Interfaces;
+using BugTracker.Repositories.Interfaces;
 using BugTracker.Services.Interfaces;
 using BugTracker.Mappers.Interfaces;
 
