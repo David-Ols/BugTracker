@@ -6,44 +6,20 @@
       dark
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+        <h2>BugTracker</h2>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+
       </div>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+  
     </v-app-bar>
 
     <v-main class="ml-15 mr-15 mt-5">
-      <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/bugs">BugList</router-link> |
-      <router-link to="/createbug">Create Bug</router-link> |
-      <router-link to="/adduser">Add User</router-link> |
-      <router-link to="/users">Users</router-link> 
+      <nav class="d-flex justify-center">
+      <router-link to="/bugs" class="ml-3 mr-3">BugList</router-link> |
+      <router-link to="/createbug" class="ml-3 mr-3">Create Bug</router-link> |
+      <router-link to="/adduser" class="ml-3 mr-3">Add User</router-link> |
+      <router-link to="/users" class="ml-3 mr-3">Users</router-link> 
     </nav>
 
       <router-view/>
