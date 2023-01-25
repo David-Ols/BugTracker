@@ -8,17 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Services\" />
-    <None Remove="Services\Interfaces\" />
-    <None Remove="Entities\" />
-    <None Remove="Repositories\" />
-    <None Remove="Repositories\Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Repositories\Interfaces\" />
+    <ProjectReference Include="..\UserAPI.Entities\UserAPI.Entities.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\UserAPI.Services\UserAPI.Services.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

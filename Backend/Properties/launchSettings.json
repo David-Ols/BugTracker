@@ -13,7 +13,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "bugList",
-      "applicationUrl": "https://localhost:7104;http://localhost:5267",
+      "applicationUrl": "https://localhost:7105;http://localhost:5267",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
