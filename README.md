@@ -30,7 +30,7 @@ Ensure that this solution will start 3 separate projects, backend server(BugTrac
 
 The application is now running and you can test it at http://localhost:8080 or http://192.168.0.26:8080
 
-## Additional Notes
+## Notes
 
 In case you need to change ports for any project, here are locations where to find it:
 
@@ -44,3 +44,7 @@ Use both Local and Network addresses provided to you after npm run serve command
 ```
 Backend/Program.cs
 ```
+
+## Testing
+To run unit tests, open BugTracker solution where you can find Test folder with 2 project. One contains unit tests for controllers and another one contains unit tests for services. 
+BugTracker solution does not have 100%  unit test coverage due to time constrains. Unit tests provided show how rest of the system would be tested. 
