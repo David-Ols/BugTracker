@@ -40,7 +40,7 @@ Backend/appsettings.Development.json
 ```
 
 ### Update port for Frontend
-Use both Local and Network addresses provided to you after npm run serve command on Frontend. Add both http and https addresses. 
+Use both Local and Network addresses provided to you after npm run serve command on Frontend.
 ```
 Backend/Program.cs
 ```
