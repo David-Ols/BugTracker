@@ -16,7 +16,7 @@ Compiles and hot-reloads for development
 npm run serve
 ```
 
-Application will run at http://localhost:8080/
+Application will run at http://localhost:8080 or http://192.168.0.26:8080
 
 
 ## Backend Setup
@@ -25,10 +25,10 @@ Navigate to Backend folder and open BugTracker.sln.
 
 This solution will load backend, UserAPI, BugAPI, UnitTests projects and class libraries.
 
-Running this solution will start 3 separate projects, backend server and 2 APIs. 
+Ensure that this solution will start 3 separate projects, backend server(BugTracker), BugAPI and UserAPI. 
 
 
-The application is now running and you can test it at http://localhost:8080/
+The application is now running and you can test it at http://localhost:8080 or http://192.168.0.26:8080
 
 ## Additional Notes
 
@@ -40,6 +40,7 @@ Backend/appsettings.Development.json
 ```
 
 ### Update port for Frontend
+Use both Local and Network addresses provided to you after npm run serve command on Frontend. Add both http and https addresses. 
 ```
 Backend/Program.cs
 ```
